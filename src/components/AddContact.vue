@@ -61,6 +61,8 @@ export default {
   name: "add-contact",
   data() {
     return {
+      contacts: [],
+      inputContact: null,
       contact: {
         id: null,
         nama: "",
@@ -78,11 +80,18 @@ export default {
         alamat: this.contact.alamat,
         telp: this.contact.telp,
         email: this.contact.email
-        
       };
 
-      const parsed = JSON.stringify(data);
-      localStorage.setItem('contactData', parsed);
+      this.contacts.push(data);
+      this.actionSave();
+      // const parsed = JSON.stringify(data);
+      // localStorage.setItem('contactData', parsed);
+    },
+
+    actionSave() {
+      const parsedd = JSON.stringify(this.contacts);
+      // console.log(parsedd);
+      localStorage.setItem('contactData', parsedd);
     },
     
     newContact() {

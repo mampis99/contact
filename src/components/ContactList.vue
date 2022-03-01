@@ -14,15 +14,30 @@
     </div>
     <div class="col-md-6">
       <h4>Contact List</h4>
-      <ul class="list-group">
+      <table class="table">
+        <tr>
+          <th>Nama</th>
+          <th>Alamat</th>
+          <th>Email</th>
+          <th>Telp.</th>
+          <th>Opsi</th>
+        </tr>
+        <tr v-for="(contact, index) in contacts" :key="index">
+          <td>{{ contact.nama }}</td>
+          <td>{{ contact.alamat }}</td>
+          <td>{{ contact.email }}</td>
+          <td>{{ contact.telp }}</td>
+          <td><button>button</button></td>
+        </tr>
+      </table>
+      <!-- <ul class="list-group">
         <li class="list-group-item"
           :class="{ active: index == currentIndex }"
-          v-for="(contacts, index) in contact"
-          :key="index"
+          v-for="(contact, index) in contacts":key="index"
           @click="setActiveContact(contact, index)">
-          {{ tutorial.title }}
+          {{ contact.telp }}
         </li>
-      </ul>
+      </ul> -->
 
       <!-- <button class="m-3 btn btn-sm btn-danger" @click="removeAllContacts">
         Remove All
@@ -69,7 +84,9 @@ export default {
   methods: {
     retrieveContact() {
       this.contacts = JSON.parse(localStorage.getItem('contactData'))
+      console.log('op');
       console.log(this.contacts);
+      // asd
     },
 
     refreshList() {
